@@ -5,4 +5,4 @@ music_controller/music_controller/SECRETKEY.txt
 
 /music_controller/api/__pycache__
 
-/music_controller/api/migrations/__pycache__
+/music_controller/api/migrations
