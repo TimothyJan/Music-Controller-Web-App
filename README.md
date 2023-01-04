@@ -5,7 +5,7 @@ Collaborative Music Playing System. Web app for a group of people to control the
 
 Host can create a room and give out a code to people who want to join the room. People can join the room, they can vote to skip the song. They can pause/play the song or whatever permissions the host gives them.<br>
 
-Tutorial 1 - Full Stack Web App with Python & JS:<br>
+Tutorial 1 - Full Stack Web App with Python & JS:
 <ul>
   <li>~<code>pip install django djangorestframework </code></li>
   <li>~<code>django-admin startproject music-controller </code></li>
@@ -19,7 +19,7 @@ Tutorial 1 - Full Stack Web App with Python & JS:<br>
   <li>~<code>python manage.py runserver</code></li>
 </ul>
 
-Tutorial 2 - Django REST Framework:<br>
+Tutorial 2 - Django REST Framework:
 <ul>
   <li>Create Room model in models.py in api app</li>
   <li>In music_controller project directory, ~<code>python manage.py makemigrations</code> to update the database and store current changes made to the app</li>
@@ -30,7 +30,7 @@ Tutorial 2 - Django REST Framework:<br>
   <li><code>generics.ListAPIView</code> api view class RoomView will list out the data</li>
 </ul>
 
-Tutorial 3 - React Integration Using Webpack & Babel:<br>
+Tutorial 3 - React Integration Using Webpack & Babel:
 <ul>
   <li>cd to music_controller project and ~<code>django-admin startapp frontend</code> </li>
   <li>In frontend app, create templates, src and static folders. static holds static files, anything our browser would cache. In static folder create frontend, css and images folders. In src folder create components folder. </li>
@@ -61,6 +61,20 @@ Tutorial 3 - React Integration Using Webpack & Babel:<br>
   <li>cd to music_controller\frontend and run ~<code>npm run dev</code></li>
   <li>The main.js inside static\frontend now contains the bundled up Javascript</li>
 </ul>
+
+Tutorial 4 - React Router and Building Components:
+<ul>
+  <li>Create an index.css in static\css folder</li>
+  <li>cd to music_controller\frontend and run ~<code>npm run dev</code>. cd to music_controller\frontend and run ~<code>python manage.py runserver</code></li>
+  <li>Create new components HomePage.js RoomJoinPage.js CreateRoomPage.js</li>
+  <li>As of late 2021, react dom v6 switch is replaced by "Routes". To use TechwithTim code, do ~<code>npm uninstall react-router-dom</code> and then <code>npm install react-router-dom@5.2.0</code></li>
+  <li>Update urls.py of music_controller/frontend with urls for react components</li>
+</ul>
+
+
+
+
+
 
 
 
