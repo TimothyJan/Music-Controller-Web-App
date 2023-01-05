@@ -71,6 +71,33 @@ Tutorial 4 - React Router and Building Components:
   <li>Update urls.py of music_controller/frontend with urls for react components</li>
 </ul>
 
+Tutorial 5 - Handling POST Requests (Django REST):
+<ul>
+  <li>in views.py of api app import following
+    <ul>
+      <li><code>from rest_framework.views import APIview</code> for generic apiview</li>
+      <li><code>from rest_framework.response import Response</code> to send custom responses from our view</li>
+      <li><code>from rest_framework import status</code> to give us access to HTTP status codes, which we will need to use when use send our custom responses</li>
+    </ul>
+  </li>
+  <li>Create a new serializer class CreateRoomSerializer in serializers.py of api app. We will send a POST request to the endpoint. This serializer will make sure the payload of the POST request corresponds with the correct fields that we need to create a new room. </li>
+  <li>Create new view class CreateRoomView in views.py of api app. use session_key.</li>
+  <li>Whenever we connect to a website we establish a session. A session is s temporary connection between 2 computers/devices. ex) don't have to sign into FB later because using the same session, everything authenticated already. Sessions have unique identities, in this case stored in system RAM. </li>
+  <li>Add CreateRoomView to urls in urls.py of api app.</li>
+  <li>Issue with editing the Room with POST. Result in Bad Request: /api/create-room and  "POST /api/create-room HTTP/1.1" 400 12241</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
