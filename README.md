@@ -127,16 +127,19 @@ Tutorial 9 - ComponentDidMount and Django Sessions
   <li>Update HomePage router in HomePage.js to join session or go to homepage with no room</li>
 </ul>
 
+Tutorial 10 - Django Sessions and Leaving Rooms
+<ul>
+  <li>Update Room.js with MaterialUI</li>
+  <li>Create <code>leaveButtonPressed()</code> in Room.js to connect with backend and access endpoint. Bind <code>this.leaveButtonPressed</code> in the constructor </li>
+  <li>Create new apiview LeaveRoom in views.py of the api app. If host of the room leaves, then removes room and everyone leaves. Query on all the room objects to see if user was the host using <code>Room.objec.filter(host=host_id)</code></li>
+  <li>Update urls.py with <code>LeaveRoom</code> view</li>
+  <li>Create a <code>clearRoomCode</code> function in HomePage.js to set the state of the roomCode to null.</li>
+  <li>Update '/room/:roomCode' route in HomePage.js with render. <code>props</code> are given by the route. Return a room with the <code>...props</code> and leaveRoomCallback. '...' is the spread operator, will take all the properties passed in as an object and spread them out as prop1 is prop1 value and prop2 is prop2 value etc. Callback is a way that child component actually modify the parent component. This passes a method to the Room component so the Room component can call that method and modify the Room component</li>
+  <li>Update <code>leaveButtonPressed()</code> in Room.js to call LeaveRoom endpoint with fetch</li>
+  <li>Update <code>getRoomDetails</code> in Room.js to account for if we do not get response.ok. If we don't get response.ok, use method <code>this.props.leaveRoomCallBack()<code>, which was passed to us from the HomePage, clear the state on the HomePage. Then use <code>this.props.history.push("/")</code> to redirect back to the home page because the room doesn't exist.</li>
+</ul>
 
+Tutorial 11 - Updating Django Models
 <ul>
   <li></li>
 </ul>
-
-
-
-
-
-
-
-
-
