@@ -85,11 +85,15 @@ Tutorial 5 - Handling POST Requests (Django REST):
   <li>Whenever we connect to a website we establish a session. A session is s temporary connection between 2 computers/devices. ex) don't have to sign into FB later because using the same session, everything authenticated already. Sessions have unique identities, in this case stored in system RAM. </li>
   <li>Add CreateRoomView to urls in urls.py of api app.</li>
   <li>Issue with editing the Room with POST. Result in Bad Request: /api/create-room and  "POST /api/create-room HTTP/1.1" 400 12241</li>
+  <li>Solved with ~<code>manage.py migrate --run-syncdb</code></li>
 </ul>
 
+Tutorial 6 - Material UI Components:
+<ul>
+  <li></li>
+</ul>
 
-
-
+Update CreateRoomPage.js with MaterialUI
 
 
 
