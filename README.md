@@ -109,11 +109,17 @@ Update urls.py in api app with GetRoom view.</li>
 
 Tutorial 8 - Creating the Room Join Page
 <ul>
-  <li></li>
+  <li>Add center class to index.css. Modify the renderd div in App.js with className="center" </li>
+  <li>Update RoomJoinPage.js for handling textfieldchange and roombutton pressed.</li>
+  <li>Create apiview class JoinRoom to check room exists</li>
+  <li>Add urls to urls.py in api app</li>
+  <li>Update RoomJoinPage.js to handle the api/join-room request</li>
 </ul>
 
-
-
+Tutorial 9 - ComponentDidMount and Django Sessions
+<ul>
+  <li></li>
+</ul>
 
 
 
