@@ -90,13 +90,27 @@ Tutorial 5 - Handling POST Requests (Django REST):
 
 Tutorial 6 - Material UI Components:
 <ul>
-  <li></li>
+  <li>Update CreateRoomPage.js with MaterialUI and connect with backend.</li>
 </ul>
 
-Update CreateRoomPage.js with MaterialUI
+Tutorial 7 - Calling APi Endpoints From React
+<ul>
+  <li>Create Room.js, responsible for handling the room page</li>
+  <li>Update HomePage.js with route for room page using roomCode</li>
+  <li><code>this.props.match.params</code>, match is the prop that stores all the information about how we get to this component from this react router</li>
+  <li>Update urls.py in music_controller\frontend with url for room. Should be able to access http://127.0.0.1:8000/room/ROOMCODE</li>
+  <li>Create a view for the Room. Add view class GetRoom to view.py in the api app 
+Update urls.py in api app with GetRoom view.</li>
+  <li><code>request.GET.get(self.lookup_url_kwarg)</code> will get the code from the parameers in the url that matches the name 'lookup_url_kwarg', in this case 'code'</li>
+  <li>Check to see if works with http://127.0.0.1:8000/api/get-room?code=ROOMCODE</li>
+  <li>Update Room.js with getRoomDetails() to fetch response from api</li>
+  <li>Update fetch in CreateRoomPage.js for the createRoom.</li>
+</ul>
 
-
-
+Tutorial 8 - Creating the Room Join Page
+<ul>
+  <li></li>
+</ul>
 
 
 
