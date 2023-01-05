@@ -118,13 +118,19 @@ Tutorial 8 - Creating the Room Join Page
 
 Tutorial 9 - ComponentDidMount and Django Sessions
 <ul>
-  <li></li>
+  <li>Update HomePage with <code>renderHomePage()</code>. More practice with Grid, Typography and ButtonGroup. <code>disableElevation</code> to remove shadows. <code>variant="contained"</code> to align horizontally</li>
+  <li>Update HomePage path with <code>renderHomePage()</code> function</li>
+  <li>Check if user is already in a room and if they are, we can redirect them to that room</li>
+  <li>Using React lifecycle component methods. Every component in React has a lifecycle which you can monitor and manipulate during 3 phasess: Mounting, Updating and Unmounting</li>
+  <li>Create new apiview <<code>class UserInRoom</code> in views.py of api app. Update urls.py with url for UserInRoom</li>
+  <li>Update HomePage with <code>async componentDidMount</code>. On first render, it will show us the homepage, once <code>componentDidMount</code> has finished running it will check if we have a room and redirect if so</li>
+  <li>Update HomePage router in HomePage.js to join session or go to homepage with no room</li>
 </ul>
 
 
-
-
-
+<ul>
+  <li></li>
+</ul>
 
 
 
