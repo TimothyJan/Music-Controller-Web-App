@@ -153,5 +153,18 @@ Tutorial 11 - Updating Django Models
 
 Tutorial 12 - React Dafult Props and Callbacks
 <ul>
+  <li>Modify CreateRoomPage so that we can pass props to the CreateRoomPage as well as have default props for a new room. Do so by removing hard-coded default values and providing a <code>defaultProps</code></li>
+  <li>Create <code>renderCreateButtons()</code> and <code>renderUpdateButtons()</code>. One method that renders the buttons to create a new room and one method that renders the button to update the room. </li>
+  <li>Update <code>render()</code> in CreateRoomPage.js with ternary operator to determine title: "Update Room" or "Create a Room"</li>
+  <li>Create <code>handleUpdateButtonPressed()</code> in CreateRoomPage.js to handle the UpdateRoom on the backend. Add <code>errorMsg</code> and <code>successMsg</code> to the this.state. Bind <code>this.handleUpdateButtonPressed</code>. Update <code>onClick</code> with <code>this.handleUpdateButtonPressed</code> for the <code>renderUpdateButtons()</code></li>
+  <li>Import Collapse from MaterialUI. Collapse will allow us to show something or collapse it on the screen. Add Collapse to <code>render()</code> function. <code>in</code> is a Boolean value, tells us whether or not to show Collapse or not</li>
+  <li>Update default value in Guest Control of Playback State in CreateRoomPage.js with <code>this.props.guestCanPause.toString()</code></li>
+  <li>After updating Room in settings, we want the Room page to auto update as well. Update Room.js for the updating CreateRoomPage using <code>updateCallback</code> and calling the <code>this.getRoomDetails</code>. Update <code>handleUpdateButtonPressed()</code> with <code>this.props.updateCallback();</code> to update Room.js when going back to that Room page. Bind <code>this.getRoomDetails</code> in Room.js</li>
+  <li>~<code>npm install @material-ui/lab</code>. <code>import Alert from "@material-ui/lab/Alert";</code> in Create RoomPage.js. Update error or success messages with Alerts. <code>severity</code>: "success" makes it green and error makes it "red". <code>onClose()</code> to clear the successMsg or errorMsg
+</li>
+</ul>
+
+Tutorial 13 - Spotify API Tutorial (Authentication & Tokens)
+<ul>
   <li></li>
 </ul>
