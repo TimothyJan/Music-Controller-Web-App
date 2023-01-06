@@ -100,16 +100,16 @@ Tutorial 7 - Calling APi Endpoints From React
   <li><code>this.props.match.params</code>, match is the prop that stores all the information about how we get to this component from this react router</li>
   <li>Update urls.py in music_controller\frontend with url for room. Should be able to access http://127.0.0.1:8000/room/ROOMCODE</li>
   <li>Create a view for the Room. Add view class GetRoom to view.py in the api app 
-Update urls.py in api app with GetRoom view.</li>
+Update urls.py in api app with GetRoom view</li>
   <li><code>request.GET.get(self.lookup_url_kwarg)</code> will get the code from the parameers in the url that matches the name 'lookup_url_kwarg', in this case 'code'</li>
   <li>Check to see if works with http://127.0.0.1:8000/api/get-room?code=ROOMCODE</li>
   <li>Update Room.js with getRoomDetails() to fetch response from api</li>
-  <li>Update fetch in CreateRoomPage.js for the createRoom.</li>
+  <li>Update fetch in CreateRoomPage.js for the createRoom</li>
 </ul>
 
 Tutorial 8 - Creating the Room Join Page
 <ul>
-  <li>Add center class to index.css. Modify the renderd div in App.js with className="center" </li>
+  <li>Add center class to index.css. Modify the render div in App.js with className="center" </li>
   <li>Update RoomJoinPage.js for handling textfieldchange and roombutton pressed.</li>
   <li>Create apiview class JoinRoom to check room exists</li>
   <li>Add urls to urls.py in api app</li>
@@ -122,7 +122,7 @@ Tutorial 9 - ComponentDidMount and Django Sessions
   <li>Update HomePage path with <code>renderHomePage()</code> function</li>
   <li>Check if user is already in a room and if they are, we can redirect them to that room</li>
   <li>Using React lifecycle component methods. Every component in React has a lifecycle which you can monitor and manipulate during 3 phasess: Mounting, Updating and Unmounting</li>
-  <li>Create new apiview <<code>class UserInRoom</code> in views.py of api app. Update urls.py with url for UserInRoom</li>
+  <li>Create new apiview <code>class UserInRoom</code> in views.py of api app. Update urls.py with url for UserInRoom</li>
   <li>Update HomePage with <code>async componentDidMount</code>. On first render, it will show us the homepage, once <code>componentDidMount</code> has finished running it will check if we have a room and redirect if so</li>
   <li>Update HomePage router in HomePage.js to join session or go to homepage with no room</li>
 </ul>
@@ -131,15 +131,27 @@ Tutorial 10 - Django Sessions and Leaving Rooms
 <ul>
   <li>Update Room.js with MaterialUI</li>
   <li>Create <code>leaveButtonPressed()</code> in Room.js to connect with backend and access endpoint. Bind <code>this.leaveButtonPressed</code> in the constructor </li>
-  <li>Create new apiview LeaveRoom in views.py of the api app. If host of the room leaves, then removes room and everyone leaves. Query on all the room objects to see if user was the host using <code>Room.objec.filter(host=host_id)</code></li>
+  <li>Create new apiview LeaveRoom in views.py of the api app. If host of the room leaves, then removes room and everyone leaves. Query on all the room objects to see if user was the host using <code>Room.objects.filter(host=host_id)</code></li>
   <li>Update urls.py with <code>LeaveRoom</code> view</li>
   <li>Create a <code>clearRoomCode</code> function in HomePage.js to set the state of the roomCode to null.</li>
   <li>Update '/room/:roomCode' route in HomePage.js with render. <code>props</code> are given by the route. Return a room with the <code>...props</code> and leaveRoomCallback. '...' is the spread operator, will take all the properties passed in as an object and spread them out as prop1 is prop1 value and prop2 is prop2 value etc. Callback is a way that child component actually modify the parent component. This passes a method to the Room component so the Room component can call that method and modify the Room component</li>
   <li>Update <code>leaveButtonPressed()</code> in Room.js to call LeaveRoom endpoint with fetch</li>
-  <li>Update <code>getRoomDetails</code> in Room.js to account for if we do not get response.ok. If we don't get response.ok, use method <code>this.props.leaveRoomCallBack()<code>, which was passed to us from the HomePage, clear the state on the HomePage. Then use <code>this.props.history.push("/")</code> to redirect back to the home page because the room doesn't exist.</li>
+  <li>Update <code>getRoomDetails</code> in Room.js to account for if we do not get response.ok. If we don't get response.ok, use method <code>this.props.leaveRoomCallBack()</code>, which was passed to us from the HomePage, clear the state on the HomePage. Then use <code>this.props.history.push("/")</code> to redirect back to the home page because the room doesn't exist.</li>
 </ul>
 
 Tutorial 11 - Updating Django Models
+<ul>
+  <li>Create a new Serializer <code>UpdateRoomSerializer</code> to handle the new Room settings update. Cannot pass a unique code to the serializer and therefore need to use <code>code = serializers.CharField(validators=[])</code> and pass that <code>code</code> to the UpdateRoomSerializer</li>
+  <li>Create a new view <code>class UpdateRoom</code> in views.py of the api app. Will be using patch to update instead of get or post. Import the <code>UpdateRoomSerializer</code> and use that as the serializer_class. Check if room exists and if user is host before sending response</li>
+  <li>Update urls.py in api app for the <code>UpdateRoom</code> view</li>
+  <li>Update this.state in Room.js with <code>showSettings</code> to determine whetehr to show settings or not. Update Room.js with <code>updateShowSettings(value)</code> function. Bind <code>this.updateShowSettings</code></li>
+  <li>Create renderSettingsButton() in Room.js make a method that will only show settings if the user is the host. Add ternary operator above leave room to show Settings button if user is the host</li>
+  <li>Create <code>renderSettings()</code> to access room settings. Import <code>CreateRoomPage</code> for room settings updates</li>
+  <li>Bind renderSettingsButton and renderSettings to this</li>
+  <li>Add if statement to render show settings or not</li>
+</ul>
+
+Tutorial 12 - React Dafult Props and Callbacks
 <ul>
   <li></li>
 </ul>
