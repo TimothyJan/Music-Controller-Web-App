@@ -166,7 +166,7 @@ Tutorial 12 - React Dafult Props and Callbacks
 
 Tutorial 13 - Spotify API Tutorial (Authentication & Tokens)
 <ul>
-  <li>We authenticate our application with Spotify. Then the user authenticates our application - your application has access to my information it can control the music so on and so forth. Then using that authentication(tokens),we can send requests to the Spotify API and will in turn control the user's music
+  <li>We authenticate our application with Spotify. Then the user authenticates our application - your application has access to my information it can control the music so on and so forth. Then using that authentication(tokens), we can send requests to the Spotify API and will in turn control the user's music
     <ul>
       <li>Application requests authorization to access data -> Spotify displays scope of what Application wants to access and prompts user to login -> User logs in and authorizes access</li>
       <li>Application requests access and refresh tokens -> Spotify returns access and refresh tokens, access tokens used to access info and refresh token used to ask for another token because access tokens expire after a period of time</li>
@@ -174,32 +174,32 @@ Tutorial 13 - Spotify API Tutorial (Authentication & Tokens)
       <li>Application - User access token in requests to Web API -> Spotify returns new access token</li>
     </ul>
   </li>
+  <li>Go to <a href="https://developer.spotify.com/dashboard/">Spotify Developer</a>, log in, and create an app</li>
+  <li>Create new app in music_controller/music_controller using ~<code>python manage.py startapp spotify</code>. Add <code>'spotify.apps.SpotifyConfig'</code> to INSTALLED_APPS of settings.py in music_controller project</li>
+  <li>Create urls.py and credentials.py in spotify app. Add credentials from Spotify to the credentials.py</li>
+  <li>To authenticate or request access from Spotify - in views.py of spotify app, create apiview <code>class AuthURL(APIView)</code> to generate a url we can use to authenticate our Spotify application. Update urls.py of spotify app for AuthURL. Update urls.py for music-controller project for spotify app</li>
+  <li>Need to set up a redirect URI in credentials.py and in Spotify developer online. After sending request to Authurl, we need a callback or some url that the information requested(returned code and state) gets returned to. After getting Authorization access, we then need to send another request and get the access and refresh token. </li>
+  <li>To create new model that can store tokens, create new model <code>class SpotifyToken</code> in models.py of Spotify app. ~<code>python manage.py makemigrations</code> and ~<code>python manage.py migrate</code></li>
+  <li>Create util.py in spotify app to save our tokens by saving into a brand new model or updating a model. Create <code>get_user_tokens</code> in util.py to get user tokens. Create <code>update_or_create_user_tokens</code> in util.py to update/create user tokens </li>
+  <li>In views.py of the spotify app, create function <code>spotify_callback</code>. Associate session key/id with their access/refresh tokens and store in our database. Use <code>update_or_create_user_tokens</code> to store tokens in database and then use redirect back to our original application. Update urls.py of spotify app with redirect to frontend for <code>spotify_callback</code>. To allow this, need to add <code>app_name = 'frontend'</code> in urls.py of frontend app because Django needs to know this urls.py file belongs to the frontend app. Need to give the '' path a formal name so that when we call the redirect we know which path we should actually go to</li>
+  <li>Need to check if current user is authenticated. Just need to check if the current session id representing the user is in the database and if the token is expired or not. Create <code>is_spotify_authenticated()</code> and <code>refresh_spotify_token()</code> in utils.py of spotify app</li>
+  <li>Need to set up a view that can tell us whether or not we are authenticated. The util is returning python code but we need it to return json so our front end can understand. Create new apiview <code>class IsAuthenticated()</code> in views.py of spotify app to call util function and return json response. Set up IsAuthenticated in the urls.py of spotify app</li>
+  <li>As soon as we get into a room, if we are the host we need to immediately authenticate our Spotify, in order to control the music. If not the host, they need to authenticate with Spotify -> Show Spotify login prompt, give authorization, take tokens and store them in the database</li>
+  <li>Add <code>spotifyAuthenticated</code> to this.state in Room.js. Create new method <code>authenticateSpotify</code> to send request to backend to check if current user is authenticated, but only if the situation is a host. Need to wait until <code>getRoomDetails()</code> has run before calling <code>authenticateSpotify</code> method and therefore need to modify <code>getRoomDetails()</code> with if statement checking if <code>this.state.isHost</code> then <code>this.authenticateSpotify()</code>. Bind <code>this.authenticateSpotify</code>. This will redirect us to spotify authorization page, then after user authorizes us, it will redirect us spotify callback. The spotify callback will save the token and redirect us to the front end and then the front end will redirect us back to the room page</li>
 </ul>
 
-Go to <a href="https://developer.spotify.com/dashboard/">Spotify Developer</a>, log in, and create an app
+Tutorial 14 - Using the Spotify API
+<ul>
+  <li>Want to get the information of the currently playing song like the duration, if it's playing or not. Need to send a request to the Spotify API to get the current information about the host of the room's playback information</li>
+  <li>In util.py create function <code>execute_spotify_api_request()<code> to send requests to Spotify.</li>
+  <li>To get information about the current song create a new api view <code>class CurrentSong(APIView)</code> in views.py of spotify app. Add path for CurrentSong view in urls.py of spotify app. Test by making a new room, playing Spotify and using http://127.0.0.1:8000/spotify/current-song</li>
+  <li>Update this.state with <code>song</code> as a dictionary with all the song information in Room.js. When song ever changes, <code>this.state.song</code> will be updated accordingly</li>
+  <li>Create new method <code>getCurrentSong()</code> in Room.js to fetch current song data from spotify app. Call <code>getCurrentSong()</code> after authenticating spotify and getting room details with <code>this.getRoomDetails();</code> in the constructor</li>
+  <li>Need to be constantly checking for updates, like if song is playing or paused. Spotify does not have support for public web sockets, and therefore we need to use polling method. The polling method is basically continually updating every single second. We set up an interval so that every second we update this.state in Room.js. We do this by creating method <code>componentDidMount()</code> to set <code>this.interval</code> and <code>componentWillUnmount()</code> to clear <code>this.interval</code> in Room.js. Also need to bind <code>this.getCurrentSong</code>. Make sure song is playing when checking http://127.0.0.1:8000/room/AOCYOS</li>
+  <li>Create new component MusicPlayer.js to provide a nice music player component in Room.js. In Room.js import MusicPlayer and use <code><MusicPlayer {...this.state.song} /></code> to pass song information into MusicPlayer </li>
+</ul>
 
-Create new app in music_controller/music_controller using ~<code>python manage.py startapp spotify</code>. Add <code>'spotify.apps.SpotifyConfig'</code> to INSTALLED_APPS of settings.py in music_controller project
-
-Create urls.py and credentials.py in spotify app. Add credentials from Spotify to the credentials.py
-
-To authenticate or request access from Spotify - in views.py of spotify app, create apiview <code>class AuthURL(APIView)</code> to generate a url we can use to authenticate our Spotify application. Update urls of spotify app for AuthURL. Update urls for music-controller project for spotify app
-
-Need to set up a redirect URI. After sending request to Authurl, we need a callback or some url that the information requested(returned code and state) gets returned to. After getting Authorization access, we then need to send another request and get the access and refresh token. 
-
-To create new model that can store tokens, create new model <code>class SpotifyToken</code> in models.py of Spotify app. ~<code>python manage.py makemigrations</code> and ~<code>python manage.py migrate</code>
-
-Create util.py in spotify app to save our tokens by saving into a brand new model or updating a model. Create <code>get_user_tokens</code> in util.py to get user tokens. Create <code>update_or_create_user_tokens</code> in util.py to update/create user tokens 
-
-In views.py of the spotify app, create function <code>spotify_callback</code>. Associate session key/id with their access/refresh tokens and store in our database. Use <code>update_or_create_user_tokens</code> to store tokens in database and then use redirect back to our original application. Update urls.py of spotify app with redirect to frontend for <code>spotify_callback</code>. To allow this, need to add <code>app_name = 'frontend'</code> in urls.py of frontend app because Djangoneeds to know this urls.py file belongs to the frontend app. Need to give the '' path a formal name so that when we call the redirect we know which path we should actually go to
-
-Need to check if current user is authenticated. Just need to check if the current session id representing the user is in the database and if the token is expired or not. Create <code>is_spotify_authenticated()</code> and <code>refresh_spotify_token()</code> in utils.py of spotify app
-
-Need to set up a view that can tell us whether or not we are authenticated. The util is returning python code but we need it to return json so our front end can understand. Create new apiview <code>class IsAuthenticated()</code> in views.py of spotify app to call util function and return json response. Set up IsAuthenticated in the urls.py of spotify app
-
-As soon as we get into a room, if we are the host we need to immediately authenticate our Spotify, in order to control the music. If not the host, they need to authenticate with Spotify -> Show Spotify login prompt, give authorization, take tokens and store them in the database
-
-Add <code>spotifyAuthenticated</code> to this.state in Room.js. Create new method <code>authenticateSpotify</code> to send request to backend to check if current user is authenticated, but only if the situation is a host. Need to wait until <code>getRoomDetails()</code> has run before calling <code>authenticateSpotify</code> method and therefore need to modify <code>getRoomDetails()</code> with if statement checking if <code>this.state.isHost</code> then <code>this.authenticateSpotify()</code>. Bind <code>this.authenticateSpotify</code>. This will redirect us to spotify authorization page, then after user authorizes us, it will redirect us spotify callback. The spotify callback will save the token and redirect us to the front end and then the front end will redirect us back to the room page
-
+Tutorial 15 - Pausing & Playing Music with Spotify API
 <ul>
   <li></li>
 </ul>
