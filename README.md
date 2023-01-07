@@ -3,7 +3,7 @@ Django &amp; React - Full Stack Web App with Python & Javascript from Tech With 
 
 Collaborative Music Playing System. Web app for a group of people to control the music being played in unity.<br>
 
-Host can create a room and give out a code to people who want to join the room. People can join the room, they can vote to skip the song. They can pause/play the song or whatever permissions the host gives them.<br>
+Host can create a room and give out a code to people who want to join the room. People can join the room, they can vote to skip the song. They can pause/play the song or whatever permissions the host gives them as long as they have Spotify Premium.<br>
 
 Tutorial 1 - Full Stack Web App with Python & JS:
 <ul>
@@ -191,7 +191,7 @@ Tutorial 13 - Spotify API Tutorial (Authentication & Tokens)
 Tutorial 14 - Using the Spotify API
 <ul>
   <li>Want to get the information of the currently playing song like the duration, if it's playing or not. Need to send a request to the Spotify API to get the current information about the host of the room's playback information</li>
-  <li>In util.py create function <code>execute_spotify_api_request()<code> to send requests to Spotify.</li>
+  <li>In util.py create function <code>execute_spotify_api_request()</code> to send requests to Spotify.</li>
   <li>To get information about the current song create a new api view <code>class CurrentSong(APIView)</code> in views.py of spotify app. Add path for CurrentSong view in urls.py of spotify app. Test by making a new room, playing Spotify and using http://127.0.0.1:8000/spotify/current-song</li>
   <li>Update this.state with <code>song</code> as a dictionary with all the song information in Room.js. When song ever changes, <code>this.state.song</code> will be updated accordingly</li>
   <li>Create new method <code>getCurrentSong()</code> in Room.js to fetch current song data from spotify app. Call <code>getCurrentSong()</code> after authenticating spotify and getting room details with <code>this.getRoomDetails();</code> in the constructor</li>
@@ -200,6 +200,14 @@ Tutorial 14 - Using the Spotify API
 </ul>
 
 Tutorial 15 - Pausing & Playing Music with Spotify API
+<ul>
+  <li>Create methods <code>play_song(session_id)</code> and <code>pause_song(session_id)</code> in utils.py of spotify app. Update urls.py with paths for PauseSong and PlaySong</li>
+  <li>Create apiviews <code>def PauseSong()</code> and <code>def PlaySong()</code> in views.pyof spotify app</li>
+  <li>Modify MusicPlayer.js to use api views <code>PauseSong</code> and <code>PlaySong</code></li>
+  <li>Create methods <code>pauseSong</code> and <code>playSong</code> in MusicPlayer.js to fetch url paths. Modify icon buttons to use <code>pauseSong</code> and <code>playSong</code></li>
+</ul>
+
+Tutorial 16 - Skipping Songs and Handling Votes
 <ul>
   <li></li>
 </ul>
