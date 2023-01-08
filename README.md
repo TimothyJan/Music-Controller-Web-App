@@ -202,12 +202,27 @@ Tutorial 14 - Using the Spotify API
 Tutorial 15 - Pausing & Playing Music with Spotify API
 <ul>
   <li>Create methods <code>play_song(session_id)</code> and <code>pause_song(session_id)</code> in utils.py of spotify app. Update urls.py with paths for PauseSong and PlaySong</li>
-  <li>Create apiviews <code>def PauseSong()</code> and <code>def PlaySong()</code> in views.pyof spotify app</li>
+  <li>Create apiviews <code>def PauseSong()</code> and <code>def PlaySong()</code> in views.py of spotify app</li>
   <li>Modify MusicPlayer.js to use api views <code>PauseSong</code> and <code>PlaySong</code></li>
   <li>Create methods <code>pauseSong</code> and <code>playSong</code> in MusicPlayer.js to fetch url paths. Modify icon buttons to use <code>pauseSong</code> and <code>playSong</code></li>
 </ul>
 
 Tutorial 16 - Skipping Songs and Handling Votes
 <ul>
+  <li>Create function <code>skip_song(session_id)</code> in util.py of spotify app. Create a path for <code>skip_song</code> in urls.py of spotify app</li>
+  <li>Create new apiview <code>SkipSong</code> in views.py of spotify app</li>
+  <li>Create new method skipSong in MusicPlayer.js</li>
+  <li>To handle votes we will need to store who has voted, check how many votes there are for a room, check if the vote was for which song and current/previous song and when the vote was cast </li>
+  <li>Update Room model in models.py of api app with current_song field</li>
+  <li>Create new model Vote in models.py of spotify app. ForeignKey, we need to pass an instance of another object(in this case Room object) to this Vote model. This will store a reference to the Room object in our Vote. That way whenever we look at a vote we can determine which Room Object that was in, as well as access information about that Room object directly. If Room gets deleted, <code>models.CASCADE</code> will cascade down and delete anything that was referencing this room</li>
+  <li>~<code>python manage.py makemigrations</code> and ~<code>python manage.py migrate</li>
+  <li>Add method <code>update_room_song()</code> to view <code>CurrentSong(APIView)</code> in views.py in spotify app. <code>from .models import Vote</code>. Add <code>self.update_room_song(room, song_id)</code> before returning Response in view <code>CurrentSong(APIView)</code></li>
+  <li>Update apiview <code>SkipSong</code> in views.py of spotify app with voting for skipsong. Update <code>CurrentSong</code> method, <code>song['votes']</code> with <code>votes = len(Vote.objects.filter(room=room, song_id=song_id))</code> and <code>song['votes_required']</code> with <code>'votes_required': room.votes_to_skip</code></li>
+  <li>Update MusicPlayer.js with <code>{this.props.votes} / {this.props.votes_required}</code> votes needed</li>
+</ul>
+
+Tutorial 17 - Functional Components (useState, useEffect)
+<ul>
   <li></li>
 </ul>
+
