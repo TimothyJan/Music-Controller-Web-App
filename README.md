@@ -9,22 +9,25 @@ Django &amp; React - Full Stack Web App with Python & Javascript from Tech With 
 <img src="screenshots/1-HomePage.png" alt="Home Page" width="150%" height="150%">
 
 <h3>Create a Room Page. Modify setting accordingly.</h3>
-<img src="screenshots/2-CreateRoomPage.png" alt="Home Page" width="150%" height="150%">
+<img src="screenshots/2-CreateRoomPage.png" alt="CreateRoomPage" width="150%" height="150%">
+
+<h3>Login to Spotify.</h3>
+<img src="screenshots/SpotifyLogin.png" alt="SpotifyLogin Page" width="200%" height="200%">
 
 <h3>Room Page with code to join room.</h3>
-<img src="screenshots/3-RoomPage.png" alt="Home Page" width="150%" height="150%">
+<img src="screenshots/3-RoomPage.png" alt="RoomPage" width="150%" height="150%">
 
 <h3>Room Join Page - enter the room code and click "ENTER ROOM" button.</h3>
-<img src="screenshots/4-RoomJoinPage.png" alt="Home Page" width="150%" height="150%">
+<img src="screenshots/4-RoomJoinPage.png" alt="RoomJoinPage" width="150%" height="150%">
 
 <h3>Guests can vote to skip if host has permitted them.</h3>
-<img src="screenshots/5-RoomPagewSkip.png" alt="Home Page" width="150%" height="150%">
+<img src="screenshots/5-RoomPagewSkip.png" alt="RoomPagewSkip" width="150%" height="150%">
 
 <h3>As the host, click the "SETTINGS" button, update settings and click the "UPDATE" button.</h3>
-<img src="screenshots/6-UpdateRoom.png" alt="Home Page" width="150%" height="150%">
+<img src="screenshots/6-UpdateRoom.png" alt="UpdateRoom" width="150%" height="150%">
 
 <h3>Home Page with room settings updated.</h3>
-<img src="screenshots/7-UpdatedRoom.png" alt="Home Page" width="150%" height="150%">
+<img src="screenshots/7-UpdatedRoom.png" alt="UpdatedRoom" width="150%" height="150%">
 
 Notes:<br>
 Tutorial 1 - Full Stack Web App with Python & JS:
