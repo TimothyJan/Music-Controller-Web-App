@@ -1,7 +1,7 @@
 # Music-Controller-Web-App
-Collaborative Music Playing full stack web app integrated with the third party Spotify API. Using Python(Django/Django Rest Framework) and Javascript(React)<br>
+Collaborative music playing full stack web app integrated with the third party Spotify API using Python(Django/Django Rest Framework) and Javascript(React)<br>
 
-Host can create a room and give out a code to people who want to join the room. Hosts control the guests' permissions such as how many votes are needed to skip the song and whether guests can pause/play songs. Spotify Premium required.<br>
+Host creates a room for people to listen to Spotify music. Host controls the guests permissions such as how many votes are needed to skip the song and whether guests can pause/play songs. Guests can join the room using the room code. Spotify Premium required.<br>
 
 Django &amp; React - Full Stack Web App with Python & Javascript from Tech With Tim.<br>
 
