@@ -227,7 +227,12 @@ Tutorial 17 - Functional Components (useState, useEffect)
   <li>Import Info component to HomePage.js. Add button for info and Route path to info in HomePage.js. Update urls.py in frontend with new info path</li>
 </ul>
 
-
+UpdateBackground
+<ul>
+  <li>Update index.js with gradient specifications</li>
+  <li>Update index.css with gradient</li>
+  <li>Update index.html with gradient div</li>
+</ul>
 
 
 
