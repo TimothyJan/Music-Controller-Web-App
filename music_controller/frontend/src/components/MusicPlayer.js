@@ -65,7 +65,7 @@ export default class MusicPlayer extends Component {
               </IconButton>
               <IconButton onClick={() => this.skipSong()}>
                 <SkipNextIcon />
-                <Typography color="textSecondary" variant="subtitle1">
+                <Typography color="textSecondary" variant="subtitle2">
                   {this.props.votes} / {this.props.votes_required} votes
                 </Typography>
               </IconButton>
