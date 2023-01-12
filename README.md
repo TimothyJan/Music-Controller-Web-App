@@ -47,8 +47,7 @@ Tutorial 1 - Full Stack Web App with Python & JS:
 Tutorial 2 - Django REST Framework:
 <ul>
   <li>Create Room model in models.py in api app</li>
-  <li>In music_controller project directory, ~<code>python manage.py makemigrations</code> to update the database and store current changes made to the app</li>
-  <li>~<code>python manage.py migrate</code></li>
+  <li>In music_controller project directory, ~<code>python manage.py makemigrations</code> to update the database and store current changes made to the app and ~<code>python manage.py migrate</code></li>
   <li>Create serializers.py in api app. This will take our Python related code and translate it into a JSON response. Add RoomSerializer class to serializers.py</li>
   <li><code>generics.CreateAPIView</code> api view class RoomView. <code>generics</code> allows us to create a class that inherits from an api view.</li>
   <li>~<code>python manage.py runserver</code> and add data</li>
@@ -63,7 +62,7 @@ Tutorial 3 - React Integration Using Webpack & Babel:
   <li>cd to music_controller\frontend and perform installations
     <ul>
       <li>~<code>npm init -y</code></li>
-      <li>Then install webpack ~<code>npm i webpack webpack-cli --save-dev</code> </li>
+      <li>Then install webpack ~<code>npm i webpack webpack-cli --save-dev</code>. Webpack is a free and open-source module bundler for JavaScript. It is made primarily for JavaScript, but it can transform front-end assets such as HTML, CSS, and images if the corresponding loaders are included. Webpack takes modules with dependencies and generates static assets representing those modules.</li>
       <li>Then install Babel ~<code>npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev</code>, Babel takes our code and transpiles it into code that is friendly with all browsers such as ES6 or ES7 Javascript code </li>
       <li>Then install react ~<code>npm i react react-dom</code> </li>
       <li>Then install material UI ~<code>npm install @material-ui/core</code> </li>
@@ -74,7 +73,7 @@ Tutorial 3 - React Integration Using Webpack & Babel:
   </li>
   <li>Create babel.config.json file in music_controller/frontend. Set up Babel loader and uses environment presets thats targetting node version 10 and @babel/preset-react because we are using react. Plugins so we can use async and await</li>
   <li>Create webpack.config.js. Webpack will bundle all our Javascript into one file and serve that bundle to the browser</li>
-  <li>Update package.json scripts with webpack running in development and watch mode. and build script with webpack in production mode </li>
+  <li>Update package.json scripts with webpack running in development and watch mode. and build script with webpack in production mode</li>
   <li>We want Django to render a page that react will take control of </li>
   <li>Inside templates, create folder frontend. Inside frontend create index.html </li>
   <li>Inside view.py of music_controller\frontend create index function to render the index template and let react take care of it </li>
@@ -135,7 +134,7 @@ Update urls.py in api app with GetRoom view</li>
 Tutorial 8 - Creating the Room Join Page
 <ul>
   <li>Add center class to index.css. Modify the render div in App.js with className="center" </li>
-  <li>Update RoomJoinPage.js for handling textfieldchange and roombutton pressed.</li>
+  <li>Update RoomJoinPage.js for handling textfieldchange and roombutton pressed</li>
   <li>Create apiview class JoinRoom to check room exists</li>
   <li>Add urls to urls.py in api app</li>
   <li>Update RoomJoinPage.js to handle the api/join-room request</li>
@@ -161,7 +160,7 @@ Tutorial 10 - Django Sessions and Leaving Rooms
   <li>Create a <code>clearRoomCode</code> function in HomePage.js to set the state of the roomCode to null.</li>
   <li>Update '/room/:roomCode' route in HomePage.js with render. <code>props</code> are given by the route. Return a room with the <code>...props</code> and leaveRoomCallback. '...' is the spread operator, will take all the properties passed in as an object and spread them out as prop1 is prop1 value and prop2 is prop2 value etc. Callback is a way that child component actually modify the parent component. This passes a method to the Room component so the Room component can call that method and modify the Room component</li>
   <li>Update <code>leaveButtonPressed()</code> in Room.js to call LeaveRoom endpoint with fetch</li>
-  <li>Update <code>getRoomDetails</code> in Room.js to account for if we do not get response.ok. If we don't get response.ok, use method <code>this.props.leaveRoomCallBack()</code>, which was passed to us from the HomePage, clear the state on the HomePage. Then use <code>this.props.history.push("/")</code> to redirect back to the home page because the room doesn't exist.</li>
+  <li>Update <code>getRoomDetails</code> in Room.js to account for if we do not get response.ok. If we don't get response.ok, use method <code>this.props.leaveRoomCallBack()</code>, which was passed to us from the HomePage, clear the state on the HomePage. Then use <code>this.props.history.push("/")</code> to redirect back to the home page because the room doesn't exist</li>
 </ul>
 
 Tutorial 11 - Updating Django Models
@@ -216,7 +215,7 @@ Tutorial 13 - Spotify API Tutorial (Authentication & Tokens)
 Tutorial 14 - Using the Spotify API
 <ul>
   <li>Want to get the information of the currently playing song like the duration, if it's playing or not. Need to send a request to the Spotify API to get the current information about the host of the room's playback information</li>
-  <li>In util.py create function <code>execute_spotify_api_request()</code> to send requests to Spotify.</li>
+  <li>In util.py create function <code>execute_spotify_api_request()</code> to send requests to Spotify</li>
   <li>To get information about the current song create a new api view <code>class CurrentSong(APIView)</code> in views.py of spotify app. Add path for CurrentSong view in urls.py of spotify app. Test by making a new room, playing Spotify and using http://127.0.0.1:8000/spotify/current-song</li>
   <li>Update this.state with <code>song</code> as a dictionary with all the song information in Room.js. When song ever changes, <code>this.state.song</code> will be updated accordingly</li>
   <li>Create new method <code>getCurrentSong()</code> in Room.js to fetch current song data from spotify app. Call <code>getCurrentSong()</code> after authenticating spotify and getting room details with <code>this.getRoomDetails();</code> in the constructor</li>
